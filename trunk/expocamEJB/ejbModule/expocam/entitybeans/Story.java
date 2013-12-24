@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.*;
 
 @Entity
+@Table(name="Story")
 public class Story implements Serializable{
 
 	@Id
@@ -14,27 +15,28 @@ public class Story implements Serializable{
 	private int id;
 	private String content;
 	private int like;
-	private int inappropriate;
+	private int inappr;
 	
 	@ManyToOne
-	private String author;
+	private RegisteredUser author;
 	
+	/*
 	public Story(String a){
-		author = a;
+		author.setNome(a);
 		like = 0;
 		inappropriate = 0;
 	}
 	
 	public int getId(){
 		return id;
-	}
+	}*/
 	
 	public int getNumLike(){
 		return like;
 	}
 	
 	public int genNumInappr(){
-		return inappropriate;
+		return inappr;
 	}
 	
 	public String getContent(){
@@ -46,7 +48,7 @@ public class Story implements Serializable{
 	}
 	
 	public void inappropriate(){
-		inappropriate = inappropriate + 1;
+		inappr = inappr + 1;
 	}
 	
 	public void setContent(String c){
