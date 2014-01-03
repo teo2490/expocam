@@ -10,7 +10,6 @@ import javax.persistence.*;
 public class RegisteredUser implements Serializable{
 	 
 	@Id
-	@Column(name="U_ID")
 	private String email;
 	private String password;
 	private String nome;

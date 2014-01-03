@@ -6,17 +6,16 @@ import java.util.Set;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Story")
 public class Story implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="S_ID")
 	private int id;
 	private String content;
-	private int like;
+	private int iLike;
 	private int inappr;
 	
+	/*@ManyToOne*/
 	@ManyToOne
 	private RegisteredUser author;
 	
@@ -32,7 +31,7 @@ public class Story implements Serializable{
 	}*/
 	
 	public int getNumLike(){
-		return like;
+		return iLike;
 	}
 	
 	public int genNumInappr(){
@@ -44,7 +43,7 @@ public class Story implements Serializable{
 	}
 	
 	public void like(){
-		like = like + 1;
+		iLike = iLike + 1;
 	}
 	
 	public void inappropriate(){
