@@ -110,6 +110,19 @@
 <%@ page import="javax.rmi.PortableRemoteObject" %>
 <%@ page import="expocam.util.ContextUtil" %>
 <body onLoad="load()">
+				<div id="header">
+					<div id="logo">
+						&nbsp;
+					</div>					
+					<div id="menu">
+				        <ul>
+				            <li><a href="LogoutServlet">Logout</a></li>
+							<li><a href="HomeUtente.jsp">Home</a></li>			            
+				        </ul>
+				    </div>
+				</div>
+	<br /><br />
+	<div align="center">
     <form action="SaveStoryServlet" method="POST" id="formEditArea" onSubmit="pulisciCodice()">
 	 <input type="hidden" name="codicePulito" id="codicePulito"/>
     <iframe src="" id="editArea" name="editArea" width="300" frameborder="0"></iframe><br/>
@@ -166,5 +179,6 @@
 	 </div>
 	 <input type="submit" value="salva"/>
 	 </form>
+	 </div>
 </body>
 </html>
