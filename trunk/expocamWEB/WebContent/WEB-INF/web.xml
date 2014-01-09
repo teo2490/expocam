@@ -60,4 +60,14 @@
     <servlet-name>SaveStoryServlet</servlet-name>
     <url-pattern>/SaveStoryServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>VoteStoryServlet</display-name>
+    <servlet-name>VoteStoryServlet</servlet-name>
+    <servlet-class>servlet.VoteStoryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VoteStoryServlet</servlet-name>
+    <url-pattern>/VoteStoryServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

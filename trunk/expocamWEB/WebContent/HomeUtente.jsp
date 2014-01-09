@@ -41,6 +41,7 @@
 				<ul>
 					<li><a href="Pictures.jsp">Upload a new photo</a></li>
 					<li><a href="NewStory.jsp">Write a new story</a></li>
+					<li><a href="ReadStory.jsp">Read stories!</a></li>
 				</ul>
     </td>
   </tr>
