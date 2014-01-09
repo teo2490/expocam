@@ -1,6 +1,7 @@
 package expocam.entitybeans;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -19,6 +20,10 @@ public class RegisteredUser implements Serializable{
 	//Storie scritte
 	@OneToMany(mappedBy="author")
 	private Set<Story> story;
+	
+	//Immagini caricate
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="owner", cascade = CascadeType.ALL)
+	private List<Image> image;
 
 	public String getEmail() {
 		return email;
@@ -67,6 +72,10 @@ public class RegisteredUser implements Serializable{
 	
 	public void setStory(Set<Story> s){
 		this.story = s;
+	}
+	
+	public List<Image> getImage(){
+		return this.image;
 	}
 
 	
