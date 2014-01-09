@@ -19,16 +19,17 @@ public class Story implements Serializable{
 	@ManyToOne
 	private RegisteredUser author;
 	
-	/*
-	public Story(String a){
-		author.setNome(a);
-		like = 0;
-		inappropriate = 0;
+	
+	public Story(String c, RegisteredUser user){
+		content = c;
+		iLike = 0;
+		inappr = 0;
+		author = user;
 	}
 	
 	public int getId(){
 		return id;
-	}*/
+	}
 	
 	public int getNumLike(){
 		return iLike;
