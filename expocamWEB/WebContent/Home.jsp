@@ -29,7 +29,7 @@
 <div>			
   <tr>
   	<td>
-		<div align="center"><img src="image/expocam.png"  width="300" height="300"/></div>
+		<div align="center"><img src="image/expocam.png"  width="450" height="300"/></div>
 	</td>
   </tr>
 			

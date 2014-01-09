@@ -39,8 +39,8 @@
     <td>
 	<p>Hi ${sessionScope.utente.nome} ${sessionScope.utente.cognome}</p>				
 				<ul>
-					<li><a href="Picture.jsp">Upload a new photo</a></li>
-					<li><a href="">Write a new story</a></li>
+					<li><a href="Pictures.jsp">Upload a new photo</a></li>
+					<li><a href="NewStory.jsp">Write a new story</a></li>
 				</ul>
     </td>
   </tr>

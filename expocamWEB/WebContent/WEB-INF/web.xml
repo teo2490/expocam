@@ -40,4 +40,24 @@
     <servlet-name>PictureServlet</servlet-name>
     <url-pattern>/PictureServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PicturesServlet</display-name>
+    <servlet-name>PicturesServlet</servlet-name>
+    <servlet-class>servlet.PicturesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PicturesServlet</servlet-name>
+    <url-pattern>/PicturesServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SaveStoryServlet</display-name>
+    <servlet-name>SaveStoryServlet</servlet-name>
+    <servlet-class>servlet.SaveStoryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SaveStoryServlet</servlet-name>
+    <url-pattern>/SaveStoryServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
