@@ -11,4 +11,5 @@ public interface ManagerStoryRemote {
 	public void newStory(String s, RegisteredUser u);
 	public List<Story> getAllStory();
 	public void addOneVote(String id);
+	public void reportTheStory(String id);
 }
