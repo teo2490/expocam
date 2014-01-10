@@ -19,6 +19,9 @@ public class Story implements Serializable{
 	@ManyToOne
 	private RegisteredUser author;
 	
+	public Story(){
+		
+	}
 	
 	public Story(String c, RegisteredUser user){
 		content = c;

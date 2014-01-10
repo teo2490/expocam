@@ -32,15 +32,25 @@ public class ManagerStory implements ManagerStoryRemote {
     
     public List<Story> getAllStory() {
 		Query q = em.createQuery("SELECT s FROM Story s");
-		List<Story> str = q.getResultList();
+		List<Story> str = (List<Story>) q.getResultList();
 		return str;
 	}
 	
 	public void addOneVote(String id) {
 		Query q = em.createQuery("SELECT s FROM Story s WHERE s.id = :id");
-		q.setParameter("id", id);
-		List<Story> ls = q.getResultList();
+		int idInt = Integer.parseInt(id);
+		q.setParameter("id", idInt);
+		List<Story> ls = (List<Story>) q.getResultList();
 		Story s = ls.get(0);
 		s.like();
+	}
+	
+	public void reportTheStory(String id) {
+		Query q = em.createQuery("SELECT s FROM Story s WHERE s.id = :id");
+		int idInt = Integer.parseInt(id);
+		q.setParameter("id", idInt);
+		List<Story> ls = (List<Story>) q.getResultList();
+		Story s = ls.get(0);
+		s.inappropriate();
 	}
 }
