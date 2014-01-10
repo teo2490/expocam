@@ -11,23 +11,11 @@
 <%@ page import="java.util.*" %>
 <%@ page import="expocam.util.ContextUtil" %>
 <%@ page import="javax.rmi.PortableRemoteObject" %>
-<body onLoad="load()">
-				<div id="header">
-					<div id="logo">
-						&nbsp;
-					</div>					
-					<div id="menu">
-				        <ul>
-				            <li><a href="LogoutServlet">Logout</a></li>
-							<li><a href="HomeUtente.jsp">Home</a></li>			            
-				        </ul>
-				    </div>
-				</div>
-	<br /><br />
+<body>
 <table width="795px" border="0" align="center">
   <tr>
     <td>
-	<div align="center"><h3>Read and vote your favorite stories!</h3></div>
+	<div align="center"><h3>Read stories!</h3></div>
     </td>
   </tr>
   <tr>
@@ -39,17 +27,14 @@
 					<%
 					Object obj = ContextUtil.getInitialContext().lookup("ManagerStory/remote");
   	 				ManagerStoryRemote man = (ManagerStoryRemote) PortableRemoteObject.narrow(obj, ManagerStoryRemote.class);
-					RegisteredUser u = (RegisteredUser) request.getSession().getAttribute("utente");
+					//RegisteredUser u = (RegisteredUser) request.getSession().getAttribute("utente");
 					try{
 						List<Story> elenco = man.getAllStory();
 						//out.println("ecco elenco: "+elenco.get(0));
 						if (!elenco.isEmpty())  
 				        { 
 							//"<p>"+e.getNome()+"</p><img src=\"image/ok.png\" height=\"20px\" width=\"20px\"><img src=\"image/no.png\" height=\"20px\" width=\"20px\" style=\"margin-left: 15px\"><br />"
-							for (Story e: elenco){
-								String idStory = Integer.toString(e.getId());
-								out.println(e.getContent()+"</br><div><form action=\"VoteStoryServlet\" method=\"post\" ><input type=\"hidden\" name=\"id\" id=\"id\" value=\""+e.getId()+"\"><input type=\"submit\" name =\"submit\" value=\"Vote!\"></form><form action=\"ReportStoryServlet\" method=\"post\" ><input type=\"hidden\" name=\"id\" id=\"id\" value=\""+e.getId()+"\"><input type=\"submit\" name =\"submit\" value=\"Report\"></form></div></br></br>");
-							}
+							for (Story e: elenco)	{ out.println(e.getContent()+"</br>______</br></br>");}
 				        }
 					}catch(Exception e){
 						out.println("There aren't story!");

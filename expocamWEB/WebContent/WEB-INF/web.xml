@@ -70,4 +70,24 @@
     <servlet-name>VoteStoryServlet</servlet-name>
     <url-pattern>/VoteStoryServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReportStoryServlet</display-name>
+    <servlet-name>ReportStoryServlet</servlet-name>
+    <servlet-class>servlet.ReportStoryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReportStoryServlet</servlet-name>
+    <url-pattern>/ReportStoryServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SignUpServlet</display-name>
+    <servlet-name>SignUpServlet</servlet-name>
+    <servlet-class>servlet.SignUpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SignUpServlet</servlet-name>
+    <url-pattern>/SignUpServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -10,19 +10,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import expocam.sessionbeans.ManagerStoryRemote;
+import expocam.sessionbeans.ManagerRegisteredUserRemote;
 import expocam.util.ContextUtil;
 
 /**
- * Servlet implementation class VoteStoryServlet
+ * Servlet implementation class SignUpServlet
  */
-public class VoteStoryServlet extends HttpServlet {
+public class SignUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public VoteStoryServlet() {
+    public SignUpServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,7 +31,6 @@ public class VoteStoryServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 	}
 
 	/**
@@ -41,16 +40,25 @@ public class VoteStoryServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 		try {
-			Object obj = ContextUtil.getInitialContext().lookup("ManagerStory/remote");
-			ManagerStoryRemote manager = (ManagerStoryRemote) PortableRemoteObject.narrow(obj, ManagerStoryRemote.class);
-			String id = request.getParameter("id");
+			Object obj = ContextUtil.getInitialContext().lookup("ManagerRegisteredUser/remote");
+			ManagerRegisteredUserRemote manager = (ManagerRegisteredUserRemote) PortableRemoteObject.narrow(obj, ManagerRegisteredUserRemote.class);
+			String email = request.getParameter("mail");
+			String password = request.getParameter("psw");
+			String nome = request.getParameter("nome");
+			String cognome = request.getParameter("cognome");
+						
+			boolean exist = false;
+			if(manager.esisteMail(email))	exist = true;
 			
-			manager.addOneVote(id);
+			if(exist == false)
+				manager.aggiungiUtente(email,password,nome,cognome);
 		} catch (NamingException e) {
-			e.printStackTrace(); 
+			e.printStackTrace();
 		}
+		
 		RequestDispatcher disp;
-		disp = request.getRequestDispatcher("ReadStory.jsp");
+		disp = request.getRequestDispatcher("Home.jsp");
 		disp.forward(request, response);
 	}
+
 }
