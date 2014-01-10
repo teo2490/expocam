@@ -14,15 +14,15 @@ import expocam.sessionbeans.ManagerStoryRemote;
 import expocam.util.ContextUtil;
 
 /**
- * Servlet implementation class VoteStoryServlet
+ * Servlet implementation class ReportStoryServlet
  */
-public class VoteStoryServlet extends HttpServlet {
+public class ReportStoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public VoteStoryServlet() {
+    public ReportStoryServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -45,7 +45,7 @@ public class VoteStoryServlet extends HttpServlet {
 			ManagerStoryRemote manager = (ManagerStoryRemote) PortableRemoteObject.narrow(obj, ManagerStoryRemote.class);
 			String id = request.getParameter("id");
 			
-			manager.addOneVote(id);
+			manager.reportTheStory(id);
 		} catch (NamingException e) {
 			e.printStackTrace(); 
 		}
@@ -53,4 +53,5 @@ public class VoteStoryServlet extends HttpServlet {
 		disp = request.getRequestDispatcher("ReadStory.jsp");
 		disp.forward(request, response);
 	}
+
 }

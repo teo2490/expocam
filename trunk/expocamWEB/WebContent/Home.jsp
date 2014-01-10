@@ -57,6 +57,11 @@
 						<input type="submit" name="submit" value="OK" />
 					</fieldset>
 				</div>
+				<div id="menu">
+				        	<a>Are you not registered?</a></br>
+				            <a href="ReadStoryForNotRegisteredUser.jsp">Read stories anyway!</a></br>
+				            <a href="SignUp.jsp">Sign up!</a>
+				</div>
 		</form>
     </td>
   </tr>
