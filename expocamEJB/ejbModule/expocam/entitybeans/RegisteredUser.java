@@ -24,6 +24,26 @@ public class RegisteredUser implements Serializable{
 	//Immagini caricate
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="owner", cascade = CascadeType.ALL)
 	private List<Image> image;
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(
+		    name="USER_VOTED_STORY",
+		    joinColumns=
+		        {@JoinColumn(name="RegisteredUser_ID"/*, referencedColumnName="U_ID"*/)},
+		    inverseJoinColumns=
+		        {@JoinColumn(name="Story_ID"/*, referencedColumnName="A_ID"*/)}
+		)
+	private Set<Story> votedStory;
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(
+		    name="USER_REPORTED_STORY",
+		    joinColumns=
+		        {@JoinColumn(name="RegisteredUser_ID"/*, referencedColumnName="U_ID"*/)},
+		    inverseJoinColumns=
+		        {@JoinColumn(name="Story_ID"/*, referencedColumnName="A_ID"*/)}
+		)
+	private Set<Story> reportedStory;
 
 	public String getEmail() {
 		return email;
@@ -76,6 +96,10 @@ public class RegisteredUser implements Serializable{
 	
 	public List<Image> getImage(){
 		return this.image;
+	}
+	
+	public void setVotedStory(Set<Story> vs) {
+		this.votedStory = vs;
 	}
 
 	

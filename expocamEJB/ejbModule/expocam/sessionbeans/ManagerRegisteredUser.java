@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import expocam.entitybeans.RegisteredUser;
+import expocam.entitybeans.Story;
 
 @Stateless
 @Remote(ManagerRegisteredUserRemote.class)
