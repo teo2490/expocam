@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import expocam.entitybeans.RegisteredUser;
 import expocam.sessionbeans.ManagerStoryRemote;
 import expocam.util.ContextUtil;
 
@@ -40,12 +41,16 @@ public class ReportStoryServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+        RegisteredUser u = (RegisteredUser) request.getSession().getAttribute("utente");
 		try {
 			Object obj = ContextUtil.getInitialContext().lookup("ManagerStory/remote");
 			ManagerStoryRemote manager = (ManagerStoryRemote) PortableRemoteObject.narrow(obj, ManagerStoryRemote.class);
 			String id = request.getParameter("id");
 			
-			manager.reportTheStory(id);
+			if(!manager.storyAlreadyReported(u, id)) {
+				manager.reportTheStory(id);
+				manager.addReportedStory(u, id);
+			}
 		} catch (NamingException e) {
 			e.printStackTrace(); 
 		}
