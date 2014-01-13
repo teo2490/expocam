@@ -11,6 +11,7 @@ public class Story implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
+	@Lob
 	private String content;
 	private int iLike;
 	private int inappr;
