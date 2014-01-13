@@ -26,6 +26,7 @@ public class ManagerImage {
 		img.setName(name);
 		img.setPic(pic);
 		img.setOwner(user);
+		em.persist(img);
 	};
 	
 	public List<Image> getListMyImage(RegisteredUser u){
