@@ -20,6 +20,12 @@ public class Story implements Serializable{
 	@ManyToOne
 	private RegisteredUser author;
 	
+	@ManyToMany(mappedBy="votedStory")
+	private Set<RegisteredUser> voter;
+	
+	@ManyToMany(mappedBy="reportedStory")
+	private Set<RegisteredUser> reporter;
+	
 	public Story(){
 		
 	}

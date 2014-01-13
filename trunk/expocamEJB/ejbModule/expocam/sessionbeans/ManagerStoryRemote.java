@@ -12,4 +12,8 @@ public interface ManagerStoryRemote {
 	public List<Story> getAllStory();
 	public void addOneVote(String id);
 	public void reportTheStory(String id);
+	public boolean storyAlreadyVoted(RegisteredUser u, String sId);
+	public void addVotedStory(RegisteredUser u, String sId);
+	public boolean storyAlreadyReported(RegisteredUser u, String sId);
+	public void addReportedStory(RegisteredUser u, String sId);
 }
