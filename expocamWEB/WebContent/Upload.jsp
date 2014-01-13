@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>User Home</title>
+		<title>Upload Image</title>
 		<style type="text/css">
 			@import url(css/main.css);
 		</style>	
@@ -32,17 +32,29 @@
 <table width="795px" border="0" align="center">
   <tr>
     <td>
-	<div align="center"><h3>PROFILE</h3></div>
+	<div align="center"><h3>UPLOAD IMAGE</h3></div>
     </td>
   </tr>
   <tr>
     <td>
-	<p>Hi ${sessionScope.utente.nome} ${sessionScope.utente.cognome}</p>				
-				<ul>
-					<li><a href="Upload.jsp">Upload a new photo</a></li>
-					<li><a href="NewStory.jsp">Write a new story</a></li>
-					<li><a href="ReadStory.jsp">Read stories!</a></li>
-				</ul>
+		<form method="post" action="UploadServlet" enctype="multipart/form-data">
+	<div class="row">
+		<div class="span5">
+		
+		<label for="name">Name</label>
+		<input type="text" name="name" id="name" />		
+			
+		<label for="file">Profile image (max. 7MB, will be resized and cropped)</label>
+		<input type="file" id="file" name="file" />
+		
+		</div>
+		
+	</div>
+	
+	<div class="form-actions">
+			<button type="submit">Submit</button>
+	</div>
+	</form>
     </td>
   </tr>
 </table>			

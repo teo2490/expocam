@@ -110,6 +110,7 @@
 <%@ page import="javax.rmi.PortableRemoteObject" %>
 <%@ page import="expocam.util.ContextUtil" %>
 <body onLoad="load()">
+<div align="center"><h3>Write a new Story</h3></div>
 				<div id="header">
 					<div id="logo">
 						&nbsp;
@@ -172,7 +173,7 @@
 				out.println("</select>");
 	        } 
 			else {
-				out.println("<p>L'utente possiede tutte le abilità esistenti nel sistema</p>");
+				out.println("<p>Upload some photos, please!</p>");
 			}
 			%>
 		 <br/>
