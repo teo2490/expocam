@@ -51,7 +51,7 @@ public class SaveStoryServlet extends HttpServlet {
 			manager.newStory(story, u);
 			
 			RequestDispatcher disp;
-			request.setAttribute("messaggio", story);
+			request.setAttribute("messaggio", "Story Saved");
 			disp = request.getRequestDispatcher("HomeUtente.jsp");
 			disp.forward(request, response);
 			
