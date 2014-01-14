@@ -44,7 +44,7 @@
       AttivaFrame("editArea").execCommand("createLink", false, linkURL);
     }    
     function aggiungiPhoto(photo){
-    	var path = "ShowPhotoServlet?id="+photo;
+    	var path = "javascript:apri(\"ShowPhotoServlet?id="+photo+"\");";
         AttivaFrame("editArea").execCommand("createLink", false, path);
       }   
 	 function vediCodice(){

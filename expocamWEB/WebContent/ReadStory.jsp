@@ -5,6 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Read stories</title>
+<script language="JavaScript">
+function apri(url) { 
+    newin = window.open(url,'titolo','scrollbars=no,resizable=yes, width=400,height=400,status=no,location=no,toolbar=no');
+} 
+</script>
 </head>
 <%@ page import="expocam.sessionbeans.*" %>
 <%@ page import="expocam.entitybeans.*" %>
