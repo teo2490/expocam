@@ -40,6 +40,8 @@
 					Object obj = ContextUtil.getInitialContext().lookup("ManagerStory/remote");
   	 				ManagerStoryRemote man = (ManagerStoryRemote) PortableRemoteObject.narrow(obj, ManagerStoryRemote.class);
 					RegisteredUser u = (RegisteredUser) request.getSession().getAttribute("utente");
+					Object ob = ContextUtil.getInitialContext().lookup("ManagerStory/remote");
+					ManagerStoryRemote manager = (ManagerStoryRemote) PortableRemoteObject.narrow(ob, ManagerStoryRemote.class);
 					try{
 						List<Story> elenco = man.getAllStory();
 						//out.println("ecco elenco: "+elenco.get(0));
@@ -48,7 +50,15 @@
 							//"<p>"+e.getNome()+"</p><img src=\"image/ok.png\" height=\"20px\" width=\"20px\"><img src=\"image/no.png\" height=\"20px\" width=\"20px\" style=\"margin-left: 15px\"><br />"
 							for (Story e: elenco){
 								String idStory = Integer.toString(e.getId());
-								out.println(e.getContent()+"</br><div><form action=\"VoteStoryServlet\" method=\"post\" ><input type=\"hidden\" name=\"id\" id=\"id\" value=\""+e.getId()+"\"><input type=\"submit\" name =\"submit\" value=\"Vote!\"></form><form action=\"ReportStoryServlet\" method=\"post\" ><input type=\"hidden\" name=\"id\" id=\"id\" value=\""+e.getId()+"\"><input type=\"submit\" name =\"submit\" value=\"Report\"></form></div></br></br>");
+								out.println(e.getContent());
+								out.println("</br>");
+								if(!manager.storyAlreadyVoted(u, idStory)) {
+									out.println("<div><form action=\"VoteStoryServlet\" method=\"post\" ><input type=\"hidden\" name=\"id\" id=\"id\" value=\""+e.getId()+"\"><input type=\"submit\" name =\"submit\" value=\"Vote!\"></form>");
+								}
+								if(!manager.storyAlreadyReported(u, idStory)) {
+								out.println("<form action=\"ReportStoryServlet\" method=\"post\" ><input type=\"hidden\" name=\"id\" id=\"id\" value=\""+e.getId()+"\"><input type=\"submit\" name =\"submit\" value=\"Report\"></form></div>");
+								}
+								out.println("</br></br>");
 							}
 				        }
 					}catch(Exception e){
