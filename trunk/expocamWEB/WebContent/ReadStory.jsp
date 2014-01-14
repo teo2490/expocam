@@ -51,14 +51,14 @@
 							for (Story e: elenco){
 								String idStory = Integer.toString(e.getId());
 								out.println(e.getContent());
-								out.println("</br>");
+								out.println("</br><div>");
 								if(!manager.storyAlreadyVoted(u, idStory)) {
-									out.println("<div><form action=\"VoteStoryServlet\" method=\"post\" ><input type=\"hidden\" name=\"id\" id=\"id\" value=\""+e.getId()+"\"><input type=\"submit\" name =\"submit\" value=\"Vote!\"></form>");
+									out.println("<form action=\"VoteStoryServlet\" method=\"post\" ><input type=\"hidden\" name=\"id\" id=\"id\" value=\""+e.getId()+"\"><input type=\"submit\" name =\"submit\" value=\"Vote!\"></form>");
 								}
 								if(!manager.storyAlreadyReported(u, idStory)) {
-								out.println("<form action=\"ReportStoryServlet\" method=\"post\" ><input type=\"hidden\" name=\"id\" id=\"id\" value=\""+e.getId()+"\"><input type=\"submit\" name =\"submit\" value=\"Report\"></form></div>");
+								out.println("<form action=\"ReportStoryServlet\" method=\"post\" ><input type=\"hidden\" name=\"id\" id=\"id\" value=\""+e.getId()+"\"><input type=\"submit\" name =\"submit\" value=\"Report\"></form>");
 								}
-								out.println("</br></br>");
+								out.println("</div></br></br>");
 							}
 				        }
 					}catch(Exception e){
