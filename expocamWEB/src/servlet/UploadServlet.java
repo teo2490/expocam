@@ -87,11 +87,12 @@ public class UploadServlet extends HttpServlet {
 					item.write(disk);
 					
 					res.setAttribute("messaggio", "Photo Uploaded");
-					manager.addImage(name, "/home/ingsw2/Desktop/jboss-5.1.0.GA/server/photo/"+item.getName(), u);
+					manager.addImage(name, "photo/"+item.getName(), u);
 					//disp = res.getRequestDispatcher("Upload.jsp");
-					//disp.forward(res, response);
+					//disp.forward(res, response); 
 	 
 					// Return an XML node with the file name and size (in bytes)
+					out.println("Image uploaded! Back to <a href=\"HomeUtente.jsp\">Home</a>");
 					//out.println(getServletContext().getRealPath("/WEB_INF"));
 					//out.println("this is a file with name: " + item.getName());
 				}

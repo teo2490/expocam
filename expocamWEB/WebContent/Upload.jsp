@@ -37,7 +37,7 @@
   </tr>
   <tr>
     <td>
-		<form method="post" action="UploadServlet" enctype="multipart/form-data">
+		<form method="post" action="UploadPhotoServlet" enctype="multipart/form-data">
 	<div class="row">
 		<div class="span5">
 		
