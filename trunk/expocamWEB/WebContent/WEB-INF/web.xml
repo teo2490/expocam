@@ -80,4 +80,24 @@
     <servlet-name>SignUpServlet</servlet-name>
     <url-pattern>/SignUpServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UploadPhotoServlet</display-name>
+    <servlet-name>UploadPhotoServlet</servlet-name>
+    <servlet-class>servlet.UploadPhotoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UploadPhotoServlet</servlet-name>
+    <url-pattern>/UploadPhotoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowPhotoServlet</display-name>
+    <servlet-name>ShowPhotoServlet</servlet-name>
+    <servlet-class>servlet.ShowPhotoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowPhotoServlet</servlet-name>
+    <url-pattern>/ShowPhotoServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

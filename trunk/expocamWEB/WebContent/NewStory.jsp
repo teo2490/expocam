@@ -44,7 +44,7 @@
       AttivaFrame("editArea").execCommand("createLink", false, linkURL);
     }    
     function aggiungiPhoto(photo){
-    	var path = "photo/"+photo;
+    	var path = "ShowPhotoServlet?id="+photo;
         AttivaFrame("editArea").execCommand("createLink", false, path);
       }   
 	 function vediCodice(){
@@ -162,13 +162,13 @@
 			//ManagerImageRemote mana = (ManagerImageRemote) PortableRemoteObject.narrow(obja, ManagerImageRemote.class);
 			RegisteredUser u = (RegisteredUser) request.getSession().getAttribute("utente");
 			//List<Image> elencoa = mana.getListMyImage(u);
-			List<Image> elencoa = u.getImage();
+			List<Photo> elencoa = u.getImage();
 			if (!elencoa.isEmpty()) 
 	        { 
 				out.println("<select onChange=\"aggiungiPhoto(this.options[this.selectedIndex].value)\" name=\"immagine\">");
 				out.println("<option value=\"null\">Scegli una foto..</option>");
-				for (Image e: elencoa)	{ 
-					out.println("<option value = \""+e.getPic()+"\" id=\"abil\" >"+e.getName()+"</option>");
+				for (Photo e: elencoa)	{ 
+					out.println("<option value = \""+e.getId()+"\" id=\"abil\" >"+e.getName()+"</option>");
 					}
 				out.println("</select>");
 	        } 
