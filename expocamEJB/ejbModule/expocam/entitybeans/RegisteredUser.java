@@ -23,7 +23,7 @@ public class RegisteredUser implements Serializable{
 	
 	//Immagini caricate
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="owner", cascade = CascadeType.ALL)
-	private List<Image> image;
+	private List<Photo> image;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
@@ -94,7 +94,7 @@ public class RegisteredUser implements Serializable{
 		this.story = s;
 	}
 	
-	public List<Image> getImage(){
+	public List<Photo> getImage(){
 		return this.image;
 	}
 	
