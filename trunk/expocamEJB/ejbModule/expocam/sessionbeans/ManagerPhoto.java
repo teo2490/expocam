@@ -1,5 +1,7 @@
 package expocam.sessionbeans;
 
+import java.sql.Blob;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Remote;
@@ -38,8 +40,8 @@ public class ManagerPhoto implements ManagerPhotoRemote {
 	};
 	
 	public List<Photo> getListMyImage(RegisteredUser u){
-		Query q = em.createQuery("SELECT i FROM Photo i WHERE i.owner = :email");
-		q.setParameter("email", u.getEmail());
+		Query q = em.createQuery("SELECT i FROM Photo i WHERE i.owner = :owner");
+		q.setParameter("owner", u); 
 		List<Photo> allImage = (List<Photo>) q.getResultList();
 		return allImage;
 	}
@@ -49,6 +51,32 @@ public class ManagerPhoto implements ManagerPhotoRemote {
 		q.setParameter("ident", idd);
 		List<Photo> allImage = (List<Photo>) q.getResultList();
 		return allImage.get(0);
+	}
+	
+	public String getTag(String id){
+		int idd = Integer.parseInt(id);
+		Query q = em.createQuery("SELECT i.name FROM Photo i WHERE i.id = :idd");
+		q.setParameter("idd", idd);
+		List<String> allTag = (List<String>) q.getResultList();
+		return allTag.get(0);
+	}
+	
+	public List<byte []> getPhoto(String id){
+		int idd = Integer.parseInt(id);
+		Query q = em.createQuery("SELECT i.image FROM Photo i WHERE i.id = :idd");
+		q.setParameter("idd", idd);
+		List<byte []> allPhoto = (List<byte []>) q.getResultList();
+		return allPhoto;
+	}
+	
+	public List<String> getAllID(){
+		Query q = em.createQuery("SELECT i.id FROM Photo i");
+		List<Integer> allID = (List<Integer>) q.getResultList();
+		List<String> allSID = new ArrayList<String>();
+		for(int i=0; i<allID.size(); i++){
+			allSID.add(i, allID.get(i).toString());
+		}
+		return allSID;
 	}
 
 
