@@ -158,7 +158,7 @@
 		    <option value="#990000">Rosso Mattone</option>
        </select>
        <%
-			Object obja = ContextUtil.getInitialContext().lookup("ManagerImage/remote");
+			Object obja = ContextUtil.getInitialContext().lookup("ManagerPhoto/remote");
 			//ManagerImageRemote mana = (ManagerImageRemote) PortableRemoteObject.narrow(obja, ManagerImageRemote.class);
 			RegisteredUser u = (RegisteredUser) request.getSession().getAttribute("utente");
 			//List<Image> elencoa = mana.getListMyImage(u);
