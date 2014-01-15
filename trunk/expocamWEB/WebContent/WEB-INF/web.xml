@@ -100,4 +100,14 @@
     <servlet-name>ShowPhotoServlet</servlet-name>
     <url-pattern>/ShowPhotoServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowTagForPhotoServlet</display-name>
+    <servlet-name>ShowTagForPhotoServlet</servlet-name>
+    <servlet-class>servlet.ShowTagForPhotoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowTagForPhotoServlet</servlet-name>
+    <url-pattern>/ShowTagForPhotoServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

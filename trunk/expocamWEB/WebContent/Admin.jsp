@@ -9,6 +9,11 @@
 			@import url(css/main.css);
 		</style>	
 	</head>
+	<%@ page import="expocam.sessionbeans.*" %>
+<%@ page import="expocam.entitybeans.*" %>
+<%@ page import="java.util.*" %>
+<%@ page import="javax.rmi.PortableRemoteObject" %>
+<%@ page import="expocam.util.ContextUtil" %>
 	<body>
 		<div id="content">
 			<div id="subcontent">
@@ -30,35 +35,37 @@
 					}
 				%>
 				<br/><br/><br/>
+<form action="ShowTagForPhotoServlet" method="post">
 <table width="795px" border="0" align="center">
   <tr>
     <td>
-	<div align="center"><h3>UPLOAD IMAGE</h3></div>
+	<div align="center"><h3>TAG</h3></div>
     </td>
   </tr>
   <tr>
     <td>
-		<form method="post" action="UploadPhotoServlet" enctype="multipart/form-data">
-	<div class="row">
-		<div class="span5">
-		
-		<label for="name">Name</label>
-		<input type="text" name="name" id="name" />		
-			
-		<label for="file">Profile image (max. 7MB, will be resized and cropped)</label>
-		<input type="file" id="file" name="file" />
-		
-		</div>
-		
-	</div>
-	
-	<div class="form-actions">
-			<button type="submit">Submit</button>
-	</div>
-	</form>
+    <%
+    Object obja = ContextUtil.getInitialContext().lookup("ManagerPhoto/remote");
+	ManagerPhotoRemote manp = (ManagerPhotoRemote) PortableRemoteObject.narrow(obja, ManagerPhotoRemote.class);
+	List<String> elencoa = manp.getAllID();
+	if (!elencoa.isEmpty()) 
+    {  
+		out.println("<select name=\"id\">");
+		out.println("<option value=\"null\">Choose a photo..</option>");
+		for (String e: elencoa)	{ 
+			out.println("<option value = \""+e+"\" id=\"abil\" >"+e+"</option>");
+			}
+		out.println("</select>");
+		out.println("<input type=\"submit\" name=\"submit\" value=\"OK\" />");
+    } 
+	else {
+		out.println("<p>No photos in the DB!</p>");
+	}
+    %>
     </td>
   </tr>
-</table>			
+</table>	
+</form>		
 			</div>
 		</div>
 	</body>

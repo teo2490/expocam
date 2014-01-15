@@ -159,12 +159,12 @@
        </select>
        <%
 			Object obja = ContextUtil.getInitialContext().lookup("ManagerPhoto/remote");
-			//ManagerImageRemote mana = (ManagerImageRemote) PortableRemoteObject.narrow(obja, ManagerImageRemote.class);
+			ManagerPhotoRemote mana = (ManagerPhotoRemote) PortableRemoteObject.narrow(obja, ManagerPhotoRemote.class);
 			RegisteredUser u = (RegisteredUser) request.getSession().getAttribute("utente");
 			//List<Image> elencoa = mana.getListMyImage(u);
-			List<Photo> elencoa = u.getImage();
+			List<Photo> elencoa = mana.getListMyImage(u);
 			if (!elencoa.isEmpty()) 
-	        { 
+	        {  
 				out.println("<select onChange=\"aggiungiPhoto(this.options[this.selectedIndex].value)\" name=\"immagine\">");
 				out.println("<option value=\"null\">Scegli una foto..</option>");
 				for (Photo e: elencoa)	{ 
