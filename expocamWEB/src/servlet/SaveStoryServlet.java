@@ -69,13 +69,15 @@ public class SaveStoryServlet extends HttpServlet {
 		try {
 			Object obj = ContextUtil.getInitialContext().lookup("ManagerTag/remote");
 			ManagerTagRemote managerTag = (ManagerTagRemote) PortableRemoteObject.narrow(obj, ManagerTagRemote.class);
-			String startTag = "\">";
+			String startTag = "\"\\);'>";
 			String finishTag = "</a>";
 			String startPic = "id=";
-			//String finishPic = "\"";
+			//String finishPic = "\");";
 			String[] tokensTag = content.split(finishTag);
 			for(int i=0; i<tokensTag.length; i++){
-				if(tokensTag[i].toString().indexOf(startTag)>-1){
+				System.out.println("Fuori");
+				if(tokensTag[i].toString().indexOf("ShowPhotoServlet")>-1){
+					System.out.println("dentro");
 					String[] tag = tokensTag[i].toString().split(startTag);
 					String tagPic = tag[1].toString();
 					System.out.println("--tag-->"+tagPic);
